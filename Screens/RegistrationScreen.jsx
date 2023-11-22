@@ -92,8 +92,7 @@ export default RegistrationScreen = () => {
             </Pressable>
           </View>
           <Pressable
-            title="Зареєстуватися"
-            onPress={() => console.log("click")}
+            onPress={() => console.log("register click")}
             style={({ pressed }) => [
               styles.submitBtn,
               pressed && { backgroundColor: "#ff9100" },
