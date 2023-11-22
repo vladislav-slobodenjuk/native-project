@@ -2,7 +2,7 @@ import React from "react";
 
 const PostsScreen = () => {
   return (
-    <div>PostsScreen</div>
+    <View>PostsScreen</View>
     //
   );
 };
