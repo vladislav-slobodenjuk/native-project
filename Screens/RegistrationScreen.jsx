@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
-  // Image,
   ImageBackground,
   Pressable,
   StyleSheet,
@@ -11,8 +10,7 @@ import {
 } from "react-native";
 
 import image from "../assets/background.png";
-// import addIcon from "../assets/add.svg";
-import SvgComponent from "./Icon";
+import { AntDesign } from "@expo/vector-icons";
 
 export default RegistrationScreen = () => {
   const [focusOn, setFocusOn] = useState(null);
@@ -24,14 +22,16 @@ export default RegistrationScreen = () => {
         <View style={styles.form}>
           <View style={styles.avatar}>
             <Pressable
-              onPress={() => console.log("click")}
-              style={({ pressed }) => [
-                styles.avatarBtn,
-                pressed && { backgroundColor: "#ff9100" },
-              ]}
+              onPress={() => console.log("avatar click")}
+              style={styles.avatarBtn}
             >
-              <SvgComponent stroke="#ff9100" />
-              {/* <Image source={addIcon} style={styles.icon} /> */}
+              {({ pressed }) => (
+                <AntDesign
+                  name="pluscircleo"
+                  size={25}
+                  color={pressed ? "#ff9100" : "#FF6C00"}
+                />
+              )}
             </Pressable>
           </View>
           <Text style={styles.title}>Реєстрація</Text>
@@ -150,13 +150,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: -12,
     bottom: 14,
-    // width: 25,
-    // height: 25,
-    backgroundColor: "black",
-  },
-  icon: {
-    // width: 25,
-    // height: 25,
   },
   title: {
     marginBottom: 33,
