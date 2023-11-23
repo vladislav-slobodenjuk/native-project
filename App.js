@@ -1,5 +1,5 @@
-import RegistrationScreen from "./Screens/RegistrationScreen";
-import LoginScreen from "./Screens/LoginScreen";
+import RegistrationScreen from "./src/Screens/RegistrationScreen";
+import LoginScreen from "./src/Screens/LoginScreen";
 
 export default function App() {
   return (

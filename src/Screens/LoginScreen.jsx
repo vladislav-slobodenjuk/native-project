@@ -32,7 +32,7 @@ const LoginScreen = () => {
               focusOn === "email" && styles.focus,
             ]}
           />
-          <View style={{ position: "relative" }}>
+          <View style={{ position: "relative", width: "100%" }}>
             <TextInput
               onFocus={() => setFocusOn("password")}
               onBlur={() => setFocusOn(null)}
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 32,
     paddingHorizontal: 16,
-    minHeight: 489,
+    paddingBottom: 145,
     width: "100%",
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     // padding: 16,
     paddingHorizontal: 16,
     marginBottom: 16,
-    width: 343,
+    width: "100%",
     height: 50,
 
     color: "#212121",
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     paddingVertical: 16,
     paddingHorizontal: 32,
-    width: 343,
+    width: "100%",
     // elevation: 3,
     backgroundColor: "#FF6C00",
     borderRadius: 100,
