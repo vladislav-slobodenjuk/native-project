@@ -26,6 +26,7 @@ const LoginScreen = () => {
             autoComplete="email"
             placeholder="Адреса електронної пошти"
             placeholderTextColor="#BDBDBD"
+            cursorColor="#FF6C00"
             style={[
               styles.input,
               styles.commonText,
@@ -40,6 +41,7 @@ const LoginScreen = () => {
               autoComplete="password"
               placeholder="Пароль"
               placeholderTextColor="#BDBDBD"
+              cursorColor="#FF6C00"
               style={[
                 styles.input,
                 styles.commonText,
