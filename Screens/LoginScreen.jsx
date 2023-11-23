@@ -23,21 +23,23 @@ const LoginScreen = () => {
           <TextInput
             onFocus={() => setFocusOn("email")}
             onBlur={() => setFocusOn(null)}
+            autoComplete="email"
+            placeholder="Адреса електронної пошти"
+            placeholderTextColor="#BDBDBD"
             style={[
               styles.input,
               styles.commonText,
               focusOn === "email" && styles.focus,
             ]}
-            placeholder="Адреса електронної пошти"
-            placeholderTextColor="#BDBDBD"
           />
           <View style={{ position: "relative" }}>
             <TextInput
               onFocus={() => setFocusOn("password")}
               onBlur={() => setFocusOn(null)}
+              secureTextEntry={isSecured}
+              autoComplete="password"
               placeholder="Пароль"
               placeholderTextColor="#BDBDBD"
-              secureTextEntry={isSecured}
               style={[
                 styles.input,
                 styles.commonText,

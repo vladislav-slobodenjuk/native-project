@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   ImageBackground,
@@ -15,6 +15,20 @@ import { AntDesign } from "@expo/vector-icons";
 export default RegistrationScreen = () => {
   const [focusOn, setFocusOn] = useState(null);
   const [isSecured, setIsSecured] = useState(true);
+
+  const login = useRef("");
+  const email = useRef("");
+  const password = useRef("");
+
+  const submit = () => {
+    const formValues = {
+      login: login.current,
+      email: email.current,
+      password: password.current,
+    };
+
+    console.log(formValues);
+  };
 
   return (
     <View style={styles.container}>
@@ -36,34 +50,39 @@ export default RegistrationScreen = () => {
           </View>
           <Text style={styles.title}>Реєстрація</Text>
           <TextInput
+            onChangeText={(text) => (login.current = text)}
             onFocus={() => setFocusOn("login")}
             onBlur={() => setFocusOn(null)}
+            placeholder="Логін"
+            placeholderTextColor="#BDBDBD"
             style={[
               styles.input,
               styles.commonText,
               focusOn === "login" && styles.focus,
             ]}
-            placeholder="Логін"
-            placeholderTextColor="#BDBDBD"
           />
           <TextInput
+            onChangeText={(text) => (email.current = text)}
             onFocus={() => setFocusOn("email")}
             onBlur={() => setFocusOn(null)}
+            autoComplete="email"
+            placeholder="Адреса електронної пошти"
+            placeholderTextColor="#BDBDBD"
             style={[
               styles.input,
               styles.commonText,
               focusOn === "email" && styles.focus,
             ]}
-            placeholder="Адреса електронної пошти"
-            placeholderTextColor="#BDBDBD"
           />
           <View style={{ position: "relative" }}>
             <TextInput
+              onChangeText={(text) => (password.current = text)}
               onFocus={() => setFocusOn("password")}
               onBlur={() => setFocusOn(null)}
+              secureTextEntry={isSecured}
+              autoComplete="password"
               placeholder="Пароль"
               placeholderTextColor="#BDBDBD"
-              secureTextEntry={isSecured}
               style={[
                 styles.input,
                 styles.commonText,
@@ -92,7 +111,7 @@ export default RegistrationScreen = () => {
             </Pressable>
           </View>
           <Pressable
-            onPress={() => console.log("register click")}
+            onPress={submit}
             style={({ pressed }) => [
               styles.submitBtn,
               pressed && { backgroundColor: "#ff9100" },
