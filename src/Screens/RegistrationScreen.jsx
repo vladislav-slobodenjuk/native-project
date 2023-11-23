@@ -35,119 +35,112 @@ export default RegistrationScreen = () => {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS == "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={-180}
+        style={styles.container}
+      >
         <StatusBar style="auto" />
-        <KeyboardAvoidingView
-          behavior={Platform.OS == "ios" ? "padding" : "height"}
-          // keyboardVerticalOffset={170}
-          // keyboardVerticalOffset={-110}
-          // style={{ flex: 1, width: "100%", height: "100%" }}
-        >
-          <ImageBackground
-            source={image}
-            resizeMode="cover"
-            style={styles.image}
-          >
-            <View style={styles.form}>
-              <View style={styles.avatar}>
-                <Pressable
-                  onPress={() => console.log("avatar click")}
-                  style={styles.avatarBtn}
-                >
-                  {({ pressed }) => (
-                    <AntDesign
-                      name="pluscircleo"
-                      size={25}
-                      color={pressed ? "#ff9100" : "#FF6C00"}
-                    />
-                  )}
-                </Pressable>
-              </View>
-              <Text style={styles.title}>Реєстрація</Text>
-
-              <TextInput
-                onChangeText={(text) => (login.current = text)}
-                onFocus={() => setFocusOn("login")}
-                onBlur={() => setFocusOn(null)}
-                autoComplete="name"
-                placeholder="Логін"
-                placeholderTextColor="#BDBDBD"
-                cursorColor="#FF6C00"
-                style={[
-                  styles.input,
-                  styles.commonText,
-                  focusOn === "login" && styles.focus,
-                ]}
-              />
-              <TextInput
-                onChangeText={(text) => (email.current = text)}
-                onFocus={() => setFocusOn("email")}
-                onBlur={() => setFocusOn(null)}
-                autoComplete="email"
-                placeholder="Адреса електронної пошти"
-                placeholderTextColor="#BDBDBD"
-                cursorColor="#FF6C00"
-                style={[
-                  styles.input,
-                  styles.commonText,
-                  focusOn === "email" && styles.focus,
-                ]}
-              />
-              <View style={{ position: "relative", width: "100%" }}>
-                <TextInput
-                  onChangeText={(text) => (password.current = text)}
-                  onFocus={() => setFocusOn("password")}
-                  onBlur={() => setFocusOn(null)}
-                  secureTextEntry={isSecured}
-                  autoComplete="password"
-                  placeholder="Пароль"
-                  placeholderTextColor="#BDBDBD"
-                  cursorColor="#FF6C00"
-                  style={[
-                    styles.input,
-                    styles.commonText,
-                    { marginBottom: 43 },
-                    focusOn === "password" && styles.focus,
-                  ]}
-                />
-                <Pressable
-                  onPress={() => setIsSecured(!isSecured)}
-                  style={({ pressed }) => [
-                    styles.inputBtn,
-                    pressed && { color: "#ff9100" },
-                  ]}
-                >
-                  {({ pressed }) => (
-                    <Text
-                      style={[
-                        styles.commonText,
-                        { color: "#1B4371" },
-                        pressed && { color: "#ff9100" },
-                      ]}
-                    >
-                      {isSecured ? "Показати" : "Приховати"}
-                    </Text>
-                  )}
-                </Pressable>
-              </View>
+        <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+          <View style={styles.form}>
+            <View style={styles.avatar}>
               <Pressable
-                onPress={submit}
+                onPress={() => console.log("avatar click")}
+                style={styles.avatarBtn}
+              >
+                {({ pressed }) => (
+                  <AntDesign
+                    name="pluscircleo"
+                    size={25}
+                    color={pressed ? "#ff9100" : "#FF6C00"}
+                  />
+                )}
+              </Pressable>
+            </View>
+            <Text style={styles.title}>Реєстрація</Text>
+
+            <TextInput
+              onChangeText={(text) => (login.current = text)}
+              onFocus={() => setFocusOn("login")}
+              onBlur={() => setFocusOn(null)}
+              autoComplete="name"
+              placeholder="Логін"
+              placeholderTextColor="#BDBDBD"
+              cursorColor="#FF6C00"
+              style={[
+                styles.input,
+                styles.commonText,
+                focusOn === "login" && styles.focus,
+              ]}
+            />
+            <TextInput
+              onChangeText={(text) => (email.current = text)}
+              onFocus={() => setFocusOn("email")}
+              onBlur={() => setFocusOn(null)}
+              autoComplete="email"
+              placeholder="Адреса електронної пошти"
+              placeholderTextColor="#BDBDBD"
+              cursorColor="#FF6C00"
+              style={[
+                styles.input,
+                styles.commonText,
+                focusOn === "email" && styles.focus,
+              ]}
+            />
+            <View style={{ position: "relative", width: "100%" }}>
+              <TextInput
+                onChangeText={(text) => (password.current = text)}
+                onFocus={() => setFocusOn("password")}
+                onBlur={() => setFocusOn(null)}
+                secureTextEntry={isSecured}
+                autoComplete="password"
+                placeholder="Пароль"
+                placeholderTextColor="#BDBDBD"
+                cursorColor="#FF6C00"
+                style={[
+                  styles.input,
+                  styles.commonText,
+                  { marginBottom: 43 },
+                  focusOn === "password" && styles.focus,
+                ]}
+              />
+              <Pressable
+                onPress={() => setIsSecured(!isSecured)}
                 style={({ pressed }) => [
-                  styles.submitBtn,
-                  pressed && { backgroundColor: "#ff9100" },
+                  styles.inputBtn,
+                  pressed && { color: "#ff9100" },
                 ]}
               >
-                <Text style={[styles.submitText, styles.commonText]}>
-                  Зареєстуватися
-                </Text>
+                {({ pressed }) => (
+                  <Text
+                    style={[
+                      styles.commonText,
+                      { color: "#1B4371" },
+                      pressed && { color: "#ff9100" },
+                    ]}
+                  >
+                    {isSecured ? "Показати" : "Приховати"}
+                  </Text>
+                )}
               </Pressable>
-              <Text style={[styles.commonText, { color: "#1B4371" }]}>
-                Вже є акаунт? Увійти
-              </Text>
             </View>
-          </ImageBackground>
-        </KeyboardAvoidingView>
-      </View>
+            <Pressable
+              onPress={submit}
+              style={({ pressed }) => [
+                styles.submitBtn,
+                pressed && { backgroundColor: "#ff9100" },
+              ]}
+            >
+              <Text style={[styles.submitText, styles.commonText]}>
+                Зареєстуватися
+              </Text>
+            </Pressable>
+            <Text style={[styles.commonText, { color: "#1B4371" }]}>
+              Вже є акаунт? Увійти
+            </Text>
+          </View>
+        </ImageBackground>
+      </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
 };
