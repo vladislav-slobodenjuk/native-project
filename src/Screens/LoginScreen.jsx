@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+
 import { StatusBar } from "expo-status-bar";
 import {
   ImageBackground,
@@ -15,6 +17,8 @@ import {
 import image from "../assets/background.png";
 
 const LoginScreen = () => {
+  const navigation = useNavigation();
+
   const [focusOn, setFocusOn] = useState(null);
   const [isSecured, setIsSecured] = useState(true);
 
